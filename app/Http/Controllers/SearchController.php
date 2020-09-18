@@ -12,7 +12,7 @@ class SearchController extends Controller
         if (empty($searchTerm)) {
             return response()->json([]);
         }
-        Cache::flush();
+
         $cacheExpirySeconds = 60 * 10; // 10 minutes
         // store DB results in cache by $searchTerm as cache key. Will make faster search results
         $results = Cache::remember($searchTerm, $cacheExpirySeconds, function () use ($searchTerm) {
