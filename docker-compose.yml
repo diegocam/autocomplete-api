@@ -19,6 +19,12 @@ services:
     links:
       - db
 
+  composer:
+    image: composer:latest
+    working_dir: /var/www
+    volumes_from:
+      - php
+
   db:
     image: mysql:8
     command: --default-authentication-plugin=mysql_native_password
