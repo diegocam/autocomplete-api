@@ -1,24 +1,24 @@
-# Lumen PHP Framework
+# Autocomplete API
+This API will query user names from a Users Database table.
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://poser.pugx.org/laravel/lumen-framework/d/total.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/lumen-framework/v/stable.svg)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://poser.pugx.org/laravel/lumen-framework/license.svg)](https://packagist.org/packages/laravel/lumen-framework)
+## Tech Stack
+This app uses [Lumen](https://lumen.laravel.com/) as the PHP framework, and Docker to develop locally, using the LEMP (Linux, Nginx, Mysql, PHP) stack.
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+## Setup
+1. Run `cd <your desired path>` to change into the directory where you want this app installed.
+2. Run `git clone <this repo> .` to clone this repo to you local machine.
+3. Run `cp .env.example .env` to create your .env config file.
+4. Run `docker-compose up -d` to install/start all Docker containers.
+5. Run `docker-compose exec php /bin/bash` to SSH into your php container by running .
+6. Run `composer install` to install any vendor dependencies.
+7. Run `php artisan migrate` to create the Users DB table.
+8. Run `php artisan db:seed` to populate the Users DB table.
 
-## Official Documentation
+## Test Installation
+Open up your web browser and go to http://localhost:8080. You should see
+```
+Lumen (8.0.1) (Laravel Components ^8.0)
+```
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
-
-## Contributing
-
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+## Test Search Endpoint
+Run `curl http://localhost:8080/search/test` where "test" can be any user's name. You should receive a response JSON format.
