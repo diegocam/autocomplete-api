@@ -13,6 +13,9 @@ class SearchController extends Controller
             return response()->json([]);
         }
 
+        // decode the incoming URL query string
+        $searchTerm = urldecode($searchTerm);
+
         $cacheExpirySeconds = 60 * 10; // 10 minutes
         // store DB results in cache by $searchTerm as cache key. Will make faster search results
         $results = Cache::remember($searchTerm, $cacheExpirySeconds, function () use ($searchTerm) {
